@@ -2,7 +2,7 @@
 Library to aquire Azure access token
 
 Sample call
-```
+```csharp
 using System;
 using FCS.Lib.Azure;
 using FCS.Lib.Utility;
