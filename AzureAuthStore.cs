@@ -28,10 +28,9 @@ namespace FCS.Lib.Azure
 {
     public class AzureAuthStore
     {
-        public AzureAuthStore(
-            string azureLoginUrl, string azureOAuthEndpoint, string azureTenantId, 
-            string azureClientId, string azureGrantType, string azureSecret, 
-            string azureLoginScope)
+        public AzureAuthStore(string azureLoginUrl, string azureOAuthEndpoint,
+            string azureLoginScope, string azureGrantType, string azureTenantId,
+            string azureClientId, string azureSecret)
         {
             AzureLoginUrl = azureLoginUrl;
             AzureOAuthEndpoint = azureOAuthEndpoint;
