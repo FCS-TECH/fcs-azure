@@ -15,8 +15,9 @@ namespace TestAzure
         {
             var settings = new MySettings();
 
-            var authStore = new AzureAuthStore(settings.LoginUrl, settings.OAuthEndpoint, settings.TenantId,
-                settings.ClientId, settings.GrantType, settings.ClientSecret, settings.LoginScope);
+            var authStore = new AzureAuthStore(
+                settings.LoginUrl, settings.OAuthEndpoint, settings.LoginScope, settings.GrantType, 
+                settings.TenantId, settings.ClientId, settings.ClientSecret);
 
             var tokenFetcher = new AzureTokenFetcher(authStore);
 
