@@ -3,41 +3,48 @@ Library to aquire Azure access token
 
 Sample call
 ```
-public class Program
+using System;
+using FCS.Lib.Azure;
+using FCS.Lib.Utility;
+
+namespace TestAzure
 {
-    static void Main(string[] args)
+    public class Program
     {
-        var settings = new MySettings();
+        static void Main(string[] args)
+        {
+            var settings = new MySettings();
 
-        var authStore = new AzureAuthStore(settings.LoginUrl, settings.OAuthEndpoint, settings.TenantId,
-            settings.ClientId, settings.GrantType, settings.ClientSecret, settings.LoginScope);
+            var authStore = new AzureAuthStore(settings.LoginUrl, settings.OAuthEndpoint, settings.TenantId,
+                settings.ClientId, settings.GrantType, settings.ClientSecret, settings.LoginScope);
 
-        var tokenFetcher = new AzureTokenFetcher(authStore);
+            var tokenFetcher = new AzureTokenFetcher(authStore);
 
-        // normally called async - but this is only a test
-        var token = tokenFetcher.FetchAzureToken().Result;
+            // normally called async - but this is only a test
+            var token = tokenFetcher.FetchAzureToken().Result;
 
-        var ts1 = Mogrify.CurrentDateTimeToTimeStamp();
-        var ts2 = Mogrify.DateTimeToTimeStamp(DateTime.Now.AddHours(+2));
+            var ts1 = Mogrify.CurrentDateTimeToTimeStamp();
+            var ts2 = Mogrify.DateTimeToTimeStamp(DateTime.Now.AddHours(+2));
 
-        Console.WriteLine($"AccessToken: {token.AccessToken}");
-        Console.WriteLine($"Expires    : {token.Expires}");
-        Console.WriteLine($"TokenType  : {token.TokenType}");
-        Console.WriteLine($"HasExpired : {DateTime.Now} {ts1} {token.HasExpired(ts1)}");
-        Console.WriteLine($"HasExpired : {DateTime.Now.AddHours(+2)} {ts2} {token.HasExpired(ts2)}");
-        Console.ReadKey();
+            Console.WriteLine($"AccessToken: {token.AccessToken}");
+            Console.WriteLine($"Expires    : {token.Expires}");
+            Console.WriteLine($"TokenType  : {token.TokenType}");
+            Console.WriteLine($"HasExpired : {DateTime.Now} {ts1} {token.HasExpired(ts1)}");
+            Console.WriteLine($"HasExpired : {DateTime.Now.AddHours(+2)} {ts2} {token.HasExpired(ts2)}");
+            Console.ReadKey();
+        }
     }
-}
 
-internal sealed class MySettings
-{
-    public string LoginUrl => "https://login.microsoftonline.com";
-    public string OAuthEndpoint => "oauth2/v2.0/token";
-    public string GrantType => "client_credentials";
-    public string LoginScope => "";
-    public string TenantId => "";
-    public string ClientId => "";
-    public string ClientSecret => "";
+    internal sealed class MySettings
+    {
+        public string LoginUrl => "https://login.microsoftonline.com";
+        public string OAuthEndpoint => "oauth2/v2.0/token";
+        public string GrantType => "client_credentials";
+        public string LoginScope => "insert-your-login-scope";
+        public string TenantId => "insert-your-tenant-id";
+        public string ClientId => "insert-your-client-id";
+        public string ClientSecret => "insert-your-client-secret";
+    }
 }
 
 ```
