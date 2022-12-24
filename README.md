@@ -30,8 +30,8 @@ namespace TestAzure
             Console.WriteLine($"AccessToken: {token.AccessToken}");
             Console.WriteLine($"Expires    : {token.Expires}");
             Console.WriteLine($"TokenType  : {token.TokenType}");
-            Console.WriteLine($"HasExpired : {ts1} {token.HasExpired(ts1)}");
-            Console.WriteLine($"HasExpired : {ts2} {token.HasExpired(ts2)}");
+            Console.WriteLine($"HasExpired : {DateTime.Now} {token.HasExpired(ts1)}");
+            Console.WriteLine($"HasExpired : {DateTime.Now.AddHours(+2)} {token.HasExpired(ts2)}");
             Console.ReadKey();
         }
     }
