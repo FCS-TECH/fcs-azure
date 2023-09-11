@@ -6,7 +6,7 @@
 // Last Modified By : FH
 // Last Modified On : 05-10-2022
 // ***********************************************************************
-// <copyright file="AzureAuthStore.cs" company="FCS-TECH">
+// <copyright file="RpcAzureAuthStore.cs" company="FCS">
 //    Copyright (C) 2022 FCS Frede's Computer Services.
 //    This program is free software: you can redistribute it and/or modify
 //    it under the terms of the GNU Affero General Public License as
@@ -29,8 +29,9 @@ namespace FCS.Lib.Azure
     public class AzureAuthStore
     {
         public AzureAuthStore(
-            string azureLoginUrl, string azureOAuthEndpoint, string azureLoginScope, string azureGrantType, 
-            string azureTenantId, string azureClientId, string azureSecret)
+            string azureLoginUrl, string azureOAuthEndpoint, string azureTenantId,
+            string azureClientId, string azureGrantType, string azureSecret,
+            string azureLoginScope)
         {
             AzureLoginUrl = azureLoginUrl;
             AzureOAuthEndpoint = azureOAuthEndpoint;
@@ -43,9 +44,9 @@ namespace FCS.Lib.Azure
 
         protected string AzureLoginUrl { get; set; }
         protected string AzureOAuthEndpoint { get; set; }
-        protected string AzureTenantId { get;}
-        public string AzureClientId { get;}
-        public string AzureGrantType { get;}
+        protected string AzureTenantId { get; }
+        public string AzureClientId { get; }
+        public string AzureGrantType { get; }
         public string AzureSecret { get; }
         public string AzureLoginScope { get; }
 

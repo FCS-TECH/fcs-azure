@@ -27,6 +27,7 @@
 
 using System;
 using System.Text.Json;
+using FCS.Lib.Common;
 using FCS.Lib.Utility;
 
 namespace FCS.Lib.Azure

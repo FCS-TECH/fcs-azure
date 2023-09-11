@@ -25,6 +25,9 @@
 // ***********************************************************************
 
 using System.Threading.Tasks;
+using FCS.Contracts;
+using FCS.Lib.Common;
+
 
 namespace FCS.Lib.Azure
 {

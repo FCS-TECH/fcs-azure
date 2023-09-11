@@ -7,7 +7,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{63F067FE-925B-4076-86F5-F630F3E5A75B}</ProjectGuid>
+    <ProjectGuid>{3B0298CC-0ECE-4703-96E2-E12F7BFFAEE0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FCS.Lib.Azure</RootNamespace>
@@ -36,25 +36,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ResponseView.cs" />
-    <Compile Include="AzureToken.cs" />
-    <Compile Include="AzureTokenDto.cs" />
+    <Compile Include="AzureAuthStore.cs" />
+    <Compile Include="AzureConfigStore.cs" />
     <Compile Include="AzureTokenFetcher.cs" />
     <Compile Include="AzureTokenHttpRequest.cs" />
     <Compile Include="AzureTokenMapper.cs" />
-    <Compile Include="IAzureTokenFetcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AzureAuthStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\fcs-utils\FCS.Lib.Utility.csproj">
-      <Project>{1F1FECFD-E07E-4B5C-A7F9-67FB89EE94A3}</Project>
-      <Name>FCS.Lib.Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -65,6 +56,20 @@
     <Reference Include="System.Text.Json">
       <HintPath>..\..\inno\inno.api.v2\packages\System.Text.Json.6.0.4\lib\net461\System.Text.Json.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fcs-common\FCS.Lib.Common.csproj">
+      <Project>{3e5fa1ab-44d2-4cbc-b6d7-80b74ca9b265}</Project>
+      <Name>FCS.Lib.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fcs-contracts\FCS.Contracts.csproj">
+      <Project>{8ccdfbd9-80ca-4ddf-9031-3d5d3fb972c2}</Project>
+      <Name>FCS.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\fcs-utils\FCS.Lib.Utility.csproj">
+      <Project>{1f1fecfd-e07e-4b5c-a7f9-67fb89ee94a3}</Project>
+      <Name>FCS.Lib.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.4\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.4\build\System.Text.Json.targets')" />
