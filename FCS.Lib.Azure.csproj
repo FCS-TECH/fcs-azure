@@ -3,6 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <LangVersion>10.0</LangVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FCS.Lib.Azure</RootNamespace>
     <AssemblyName>FCS.Lib.Azure</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
@@ -38,9 +39,14 @@
   <ItemGroup>
     <Compile Include="AzureAuthStore.cs" />
     <Compile Include="AzureConfigStore.cs" />
+    <Compile Include="AzureToken.cs" />
+    <Compile Include="AzureTokenDto.cs" />
     <Compile Include="AzureTokenFetcher.cs" />
     <Compile Include="AzureTokenHttpRequest.cs" />
     <Compile Include="AzureTokenMapper.cs" />
+    <Compile Include="IAzureConfigProvider.cs" />
+    <Compile Include="IAzureTokenFetcher.cs" />
+    <Compile Include="IAzureTokenProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,10 +67,6 @@
     <ProjectReference Include="..\fcs-common\FCS.Lib.Common.csproj">
       <Project>{3e5fa1ab-44d2-4cbc-b6d7-80b74ca9b265}</Project>
       <Name>FCS.Lib.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\fcs-contracts\FCS.Contracts.csproj">
-      <Project>{8ccdfbd9-80ca-4ddf-9031-3d5d3fb972c2}</Project>
-      <Name>FCS.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\fcs-utils\FCS.Lib.Utility.csproj">
       <Project>{1f1fecfd-e07e-4b5c-a7f9-67fb89ee94a3}</Project>

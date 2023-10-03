@@ -6,7 +6,7 @@
 // Last Modified By : root
 // Last Modified On : 2023 10 02 15:24
 // ***********************************************************************
-// <copyright file="AzureTokenMapper.cs" company="FCS">
+// <copyright file="AzureToken.cs" company="FCS">
 //     Copyright (C) 2023-2023 FCS Frede's Computer Services.
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU Affero General Public License as
@@ -24,27 +24,32 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System;
-using System.Text.Json;
-using FCS.Lib.Utility;
-
 namespace FCS.Lib.Azure;
 
-public class AzureTokenMapper
+public class AzureToken
 {
-    public AzureToken MapAzureToken(string json)
-    {
-        if (string.IsNullOrWhiteSpace(json))
-            throw new ArgumentNullException(nameof(json));
+    /// <summary>
+    ///     Token Type
+    /// </summary>
+    public string TokenType { get; set; } = "";
 
-        var token = JsonSerializer.Deserialize<AzureTokenDto>(json);
-        return token == null
-            ? null
-            : new AzureToken
-            {
-                AccessToken = token.AccessToken,
-                Expires = Mogrify.CurrentDateTimeToTimeStamp() + token.ExtExpiresIn - 600,
-                TokenType = token.TokenType
-            };
+    /// <summary>
+    ///     Access Token
+    /// </summary>
+    public string AccessToken { get; set; } = "";
+
+    /// <summary>
+    ///     Expires
+    /// </summary>
+    public long Expires { get; set; }
+
+    /// <summary>
+    ///     Token Has Expired
+    /// </summary>
+    /// <param name="timestamp"></param>
+    /// <returns></returns>
+    public bool HasExpired(long timestamp)
+    {
+        return timestamp > Expires;
     }
 }
