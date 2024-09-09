@@ -25,9 +25,8 @@
 // ***********************************************************************
 
 using System.Threading.Tasks;
-using FCS.Lib.Azure;
 
-namespace Inno.Azure;
+namespace FCS.Lib.Azure;
 
 /// <summary>
 ///     Implements IAzureTokenFetcher
